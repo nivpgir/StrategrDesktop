@@ -4,6 +4,7 @@
 
 #include <QMouseEvent>
 #include <QPainter>
+#include <QPainterPath>
 #include <QScrollBar>
 
 #include "applicationsettings.h"

@@ -6,6 +6,7 @@
 #define STRATEGR_OVERVIEW_H
 
 #include <cmath>
+#include <functional>
 #include <optional>
 #include <vector>
 

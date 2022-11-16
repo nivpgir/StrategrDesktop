@@ -95,14 +95,6 @@ namespace stg {
         set_alpha(std::round(value * 255u));
     }
 
-    void color::set_rgba(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
-        data = 0u;
-        data = data | static_cast<uint32_t>(red << 24u);
-        data = data | static_cast<uint32_t>(green << 16u);
-        data = data | static_cast<uint32_t>(blue << 8u);
-        data = data | static_cast<uint32_t>(alpha);
-    }
-
     auto color::rgb_components() const -> std::array<double, 4> {
         return {red_component(),
                 green_component(),
@@ -116,21 +108,21 @@ namespace stg {
         hue = hue * 360 / 60;
 
         auto chroma = (1 - std::abs(2 * lightness - 1)) * saturation;
-        auto x = chroma * (1 - std::abs(std::fmodf(hue, 2) - 1));
+        auto x = chroma * (1 - std::abs(fmodf(hue, 2) - 1));
 
         auto rgb = std::array<float, 3>();
 
-        if (std::ceilf(hue) == 1) {
+        if (ceilf(hue) == 1) {
             rgb = {chroma, x, 0};
-        } else if (std::ceilf(hue) == 2) {
+        } else if (ceilf(hue) == 2) {
             rgb = {x, chroma, 0};
-        } else if (std::ceilf(hue) == 3) {
+        } else if (ceilf(hue) == 3) {
             rgb = {0, chroma, x};
-        } else if (std::ceilf(hue) == 4) {
+        } else if (ceilf(hue) == 4) {
             rgb = {0, x, chroma};
-        } else if (std::ceilf(hue) == 5) {
+        } else if (ceilf(hue) == 5) {
             rgb = {x, 0, chroma};
-        } else if (std::ceilf(hue) == 6) {
+        } else if (ceilf(hue) == 6) {
             rgb = {chroma, 0, x};
         }
 

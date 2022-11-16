@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.14)
 project(Strategr)
 
+# use clang compiler
+set(CMAKE_C_COMPILER_TARGET ${TARGET})
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER_TARGET ${TARGET})
+set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_ASM_COMPILER_TARGET ${TARGET})
+set(CMAKE_ASM_COMPILER clang)
+
 set(CMAKE_CXX_STANDARD 17)
 set(Boost_USE_STATIC_LIBS ON)
 
@@ -20,6 +28,10 @@ endif ()
 if (WIN32)
     find_package(Qt5 COMPONENTS WinExtras REQUIRED)
     find_library(WinSparkle_PATH WinSparkle)
+endif ()
+
+if (UNIX)
+   add_compile_options("-fpermissive")
 endif ()
 
 include_directories(.)

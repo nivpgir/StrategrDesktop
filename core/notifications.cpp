@@ -6,6 +6,7 @@
 
 #include "persistent.h"
 #include "time_utils.h"
+#include <cassert>
 #include <utility>
 
 namespace stg::user_notifications {

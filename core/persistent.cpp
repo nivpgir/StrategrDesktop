@@ -3,6 +3,7 @@
 //
 
 #include "persistent.h"
+#include <cassert>
 
 namespace stg {
     persistent_storage::backend::setter_t persistent_storage::backend::set = nullptr;

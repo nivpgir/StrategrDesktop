@@ -155,10 +155,11 @@ auto Application::notifierBackend() -> const NotifierBackend & {
 }
 
 
-#ifdef Q_OS_WIN
 
 void Application::checkForUpdates() {
+#ifdef Q_OS_WIN
     win_sparkle_check_update_with_ui();
-}
-
+#else
+    std::cout << "Check for updates is unavailable on this platform" << std::endl;
 #endif
+}
